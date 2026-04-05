@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C++ Learning Hub</title>
+</head>
+<body>
+
+<h1>C++ Learning Hub</h1>
+<p>Click on any topic to view questions and answers</p>
+<hr>
+
+<details>
+<summary><b>1. Single Dimensional Arrays</b></summary>
+
+<p>Q1: Find sum of array</p>
+<pre>
+int arr[5]={1,2,3,4,5}, sum=0;
+for(int i=0;i<5;i++) sum+=arr[i];
+cout<<sum;
+</pre>
+
+<p>Q2: Find largest element</p>
+<pre>
+int max=arr[0];
+for(int i=1;i<5;i++)
+ if(arr[i]>max) max=arr[i];
+cout<<max;
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>2. File Handling</b></summary>
+
+<p>Q1: Add two numbers</p>
+<pre>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream outfile("output.txt");
+
+    if (!outfile) {
+        cout << "Error creating file!" << endl;
+        return 1;
+    }
+
+    outfile << "Hello, this is a test file." << endl;
+    outfile << "Created using C++ File Handling." << endl;
+    outfile << "This demonstrates writing text to a file." << endl;
+
+    outfile.close();
+
+    cout << "Text written to file successfully!" << endl;
+    return 0;
+}
+
+</pre>
+
+<p>Q2: Even or Odd</p>
+<pre>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        cout << ch;
+    }
+
+    infile.close();
+    return 0;
+}
+
+</pre>
+<p></p>
+<pre>#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        cout << ch;
+    }
+
+    infile.close();
+    return 0;
+}
+</pre>
+<p></p>
+<pre>#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    char ch;
+    int lineCount = 0;
+
+    while (infile.get(ch)) {
+        if (ch == '\n') {
+            lineCount++;
+        }
+    }
+
+    cout << "Number of lines: " << lineCount << endl;
+
+    infile.close();
+    return 0;
+}
+</pre>
+<p></p>
+<pre>#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    char word[100];
+    int wordCount = 0;
+
+    while (infile >> word) {
+        wordCount++;
+    }
+
+    cout << "Number of words: " << wordCount << endl;
+
+    infile.close();
+    return 0;
+}
+</pre>
+
+<p></p>
+<pre>#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+    ofstream outfile("copied.txt");
+
+    if (!infile || !outfile) {
+        cout << "Error opening files!" << endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        outfile.put(ch);
+    }
+
+    infile.close();
+    outfile.close();
+
+    cout << "File copied successfully!" << endl;
+    return 0;
+}
+</pre>
+
+<p></p>
+<pre>#include <iostream>
+#include <fstream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char filename[100], oldWord[50], newWord[50];
+
+    cout << "Enter filename: ";
+    cin >> filename;
+    cout << "Enter word to replace: ";
+    cin >> oldWord;
+    cout << "Enter new word: ";
+    cin >> newWord;
+
+    ifstream infile(filename);
+    ofstream outfile("temp.txt");
+
+    if (!infile || !outfile) {
+        cout << "Error opening files!" << endl;
+        return 1;
+    }
+
+    char word[100];
+    while (infile >> word) {
+        if (strcmp(word, oldWord) == 0) {
+            outfile << newWord << " ";
+        } else {
+            outfile << word << " ";
+        }
+    }
+
+    infile.close();
+    outfile.close();
+
+    remove(filename);
+    rename("temp.txt", filename);
+
+    cout << "Word replaced successfully!" << endl;
+    return 0;
+}
+</pre>
+<p>Q8.</p>
+<pre></pre>
+
+<p>Q7.</p>
+<pre>#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream outfile("output.txt", ios::app);
+
+    if (!outfile) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    outfile << "This is appended text." << endl;
+    outfile << "New data added to the existing file." << endl;
+
+    outfile.close();
+
+    cout << "Data appended successfully!" << endl;
+    return 0;
+}
+</pre>
+</details>
+
+<hr>
+
+<details>
+<summary><b>3. Strings</b></summary>
+
+<p>Q1: String length</p>
+<pre>
+string s="Hello";
+cout<<s.length();
+</pre>
+
+<p>Q2: Reverse string</p>
+<pre>
+reverse(s.begin(), s.end());
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>4. Multi-Dimensional Arrays</b></summary>
+
+<p>Q1: Matrix addition</p>
+<pre>
+c[i][j]=a[i][j]+b[i][j];
+</pre>
+
+<p>Q2: Display matrix</p>
+<pre>
+cout<<a[i][j];
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>5. Basic Programming Constructs</b></summary>
+
+<p>Q1: Print 1–10</p>
+<pre>
+for(int i=1;i<=10;i++) cout<<i;
+</pre>
+
+<p>Q2: Prime check</p>
+<pre>
+if(n%i==0) flag=0;
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>6. Inheritance</b></summary>
+
+<p>Q1: Base class</p>
+<pre>
+class A{
+public:
+ void show(){ cout<<"Base"; }
+};
+</pre>
+
+<p>Q2: Derived class</p>
+<pre>
+class B: public A{};
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>7. Data Conversion</b></summary>
+
+<p>Q1: C++ Program to convert String to int
+</p>
+<pre>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "12345";
+    int num = stoi(str);
+
+    cout << "String: " << str << endl;
+    cout << "Integer: " << num << endl;
+    cout << "String + 100 = " << num + 100 << endl;
+
+    return 0;
+}
+
+</pre>
+
+<p>Q2: C++ Program to convert int to String
+</p>
+<pre>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int num = 12345;
+    string str = to_string(num);
+
+    cout << "Integer: " << num << endl;
+    cout << "String: " << str << endl;
+    cout << "String length: " << str.length() << endl;
+
+    return 0;
+}
+
+</pre>
+
+<p>Q3: C++ Program to convert String to long
+</p>
+<pre>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "9876543210";
+    long num = stol(str);
+
+    cout << "String: " << str << endl;
+    cout << "Long: " << num << endl;
+    cout << "Long + 1000 = " << num + 1000 << endl;
+
+    return 0;
+}
+
+</pre>
+
+<p>Q4. C++ Program to convert long to String
+</p>
+<pre>#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    long num = 9876543210L;
+    string str = to_string(num);
+
+    cout << "Long: " << num << endl;
+    cout << "String: " << str << endl;
+
+    return 0;
+}
+</pre>
+<p>Q5. C++ Program to convert String to float
+</p>
+<pre>#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "3.14159";
+    float num = stof(str);
+
+    cout << "String: " << str << endl;
+    cout << "Float: " << num << endl;
+    cout << "Float * 2 = " << num * 2 << endl;
+
+    return 0;
+}
+</pre>
+<p>Q 6. C++ Program to convert float to String
+</p>
+<pre>#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    float num = 3.14159f;
+    string str = to_string(num);
+
+    cout << "Float: " << num << endl;
+    cout << "String: " << str << endl;
+
+    return 0;
+}
+</pre>
+<p>Q7. C++ Program to convert String to double
+</p>
+<pre>#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "3.14159265358979";
+    double num = stod(str);
+
+    cout << "String: " << str << endl;
+    cout << "Double: " << num << endl;
+    cout << "Double * 2 = " << num * 2 << endl;
+
+    return 0;
+}
+</pre>
+
+<p>Q8. C++ Program to convert double to String
+</p>
+<pre>#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    double num = 3.14159265358979;
+    string str = to_string(num);
+
+    cout << "Double: " << num << endl;
+    cout << "String: " << str << endl;
+
+    return 0;
+}
+</pre>
+
+<p>Q9. C++ Program to convert char to int
+</p>
+<pre>#include <iostream>
+using namespace std;
+
+int main() {
+    char ch = 'A';
+    int num = (int)ch;
+
+    cout << "Character: " << ch << endl;
+    cout << "Integer (ASCII value): " << num << endl;
+
+    char ch2 = '5';
+    int num2 = ch2 - '0';
+    cout << "\nCharacter '5' to Integer: " << num2 << endl;
+
+    return 0;
+}
+</pre>
+<p>Q10. C++ Program to convert int to char
+</p>
+<pre>#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 65;
+    char ch = (char)num;
+
+    cout << "Integer: " << num << endl;
+    cout << "Character: " << ch << endl;
+
+    int num2 = 5;
+    char ch2 = num2 + '0';
+    cout << "\nInteger 5 to Character: " << ch2 << endl;
+
+    return 0;
+}
+</pre>
+<p>Q11. C++ Program to convert Binary to Decimal
+</p>
+<pre>#include <iostream>
+#include <cmath>
+using namespace std;
+
+int binaryToDecimal(long long binary) {
+    int decimal = 0;
+    int i = 0;
+
+    while (binary != 0) {
+        int remainder = binary % 10;
+        decimal += remainder * pow(2, i);
+        binary /= 10;
+        i++;
+    }
+
+    return decimal;
+}
+
+int main() {
+    long long binary;
+    cout << "Enter binary number: ";
+    cin >> binary;
+
+    int decimal = binaryToDecimal(binary);
+
+    cout << "Binary: " << binary << endl;
+    cout << "Decimal: " << decimal << endl;
+
+    return 0;
+}
+</pre>
+<p>Q12. C++ Program to convert Decimal to Binary
+</p>
+<pre>#include <iostream>
+using namespace std;
+
+void decimalToBinary(int n) {
+    int binary[32];
+    int i = 0;
+
+    while (n > 0) {
+        binary[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+
+    cout << "Binary: ";
+    for (int j = i - 1; j >= 0; j--) {
+        cout << binary[j];
+    }
+    cout << endl;
+}
+
+int main() {
+    int decimal;
+    cout << "Enter decimal number: ";
+    cin >> decimal;
+
+    cout << "Decimal: " << decimal << endl;
+    decimalToBinary(decimal);
+
+    return 0;
+}
+</pre>
+<p>Q13. C++ Program to convert Hex to Decimal
+</p>
+<pre>#include <iostream>
+#include <cstring>
+#include <cmath>
+using namespace std;
+
+int hexCharToInt(char ch) {
+    if (ch >= '0' && ch <= '9')
+        return ch - '0';
+    else if (ch >= 'A' && ch <= 'F')
+        return ch - 'A' + 10;
+    else if (ch >= 'a' && ch <= 'f')
+        return ch - 'a' + 10;
+    return 0;
+}
+
+int hexToDecimal(char hex[]) {
+    int decimal = 0;
+    int len = strlen(hex);
+    int base = 1;
+
+    for (int i = len - 1; i >= 0; i--) {
+        decimal += hexCharToInt(hex[i]) * base;
+        base *= 16;
+    }
+
+    return decimal;
+}
+
+int main() {
+    char hex[20];
+    cout << "Enter hexadecimal number: ";
+    cin >> hex;
+
+    int decimal = hexToDecimal(hex);
+
+    cout << "Hexadecimal: " << hex << endl;
+    cout << "Decimal: " << decimal << endl;
+
+    return 0;
+}
+</pre>
+<p>Q14. </p>
+<pre>#include <iostream>
+using namespace std;
+
+void decimalToHex(int n) {
+    char hex[20];
+    int i = 0;
+
+    while (n != 0) {
+        int remainder = n % 16;
+
+        if (remainder < 10)
+            hex[i++] = remainder + '0';
+        else
+            hex[i++] = remainder - 10 + 'A';
+
+        n = n / 16;
+    }
+
+    cout << "Hexadecimal: ";
+    for (int j = i - 1; j >= 0; j--) {
+        cout << hex[j];
+    }
+    cout << endl;
+}
+
+int main() {
+    int decimal;
+    cout << "Enter decimal number: ";
+    cin >> decimal;
+
+    cout << "Decimal: " << decimal << endl;
+    decimalToHex(decimal);
+
+    return 0;
+}
+</pre>
+<p>Q15. </p>
+<pre>#include <iostream>
+#include <cmath>
+using namespace std;
+
+int octalToDecimal(int octal) {
+    int decimal = 0;
+    int i = 0;
+
+    while (octal != 0) {
+        int digit = octal % 10;
+        decimal += digit * pow(8, i);
+        octal /= 10;
+        i++;
+    }
+
+    return decimal;
+}
+
+int main() {
+    int octal;
+    cout << "Enter octal number: ";
+    cin >> octal;
+
+    int decimal = octalToDecimal(octal);
+
+    cout << "Octal: " << octal << endl;
+    cout << "Decimal: " << decimal << endl;
+
+    return 0;
+}
+</pre>
+</details>
+
+<hr>
+
+<details>
+<summary><b>8. OOPs</b></summary>
+
+<p>Q1: Class</p>
+<pre>
+class Student{ public:int id; };
+</pre>
+
+<p>Q2: Constructor</p>
+<pre>
+A(){ cout<<"Constructor"; }
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>9. Operator Overloading</b></summary>
+
+<p>Q1: + operator</p>
+<pre>
+A operator+(A obj){
+ A temp;
+ temp.x=x+obj.x;
+ return temp;
+}
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>10. Function</b></summary>
+
+<p>Q1: Write file</p>
+<pre>
+ofstream file("test.txt");
+file<<"Hello";
+</pre>
+
+<p>Q2: Read file</p>
+<pre>
+ifstream file("test.txt");
+file>>s;
+</pre>
+
+</details>
+
+<hr>
+
+<details>
+<summary><b>11. Virtual Functions</b></summary>
+
+<p>Q1: Virtual function</p>
+<pre>
+virtual void show(){ cout<<"Base"; }
+</pre>
+
+<p>Q2: Runtime polymorphism</p>
+<pre>
+ptr->show();
+</pre>
+
+</details>
+
+<hr>
+
+<footer>
+<p>© 2026 C++ Learning Website</p>
+</footer>
+
+</body>
+</html>
